@@ -1,47 +1,33 @@
 <section class="about container" id="about" data-aos="fade-up">
-  <h2 class="section-title" >About Me</h2>
 
-  <div class="about-wrapper glass-panel">
+    <div class="eyebrow">About Me</div>
 
-    <!-- LEFT: TEXT -->
-    <div class="about-left">
-      <p class="about-intro">
-        {{ about.intro }}
-      </p>
-
-      <div class="about-highlights">
-        <div class="highlight card" *ngFor="let item of about.highlights">
-          <div class="icon-box">
-            <i class="fa-solid" [ngClass]="item.icon"></i>
-          </div>
-          <div>
-            <p class="highlight-text">{{ item.text }}</p>
-          </div>
+    <div class="main-row">
+        <h2 class="headline">
+            Building<br>
+            <span class="grad">fast &amp;</span><br>
+            beautiful.
+        </h2>
+        <div class="stats-row">
+            <div class="stat-orb" *ngFor="let s of stats; let i = index"
+                [style.animation-delay]="(0.2 + i * 0.12) + 's'">
+                <span class="stat-num">{{ s.display }}</span>
+                <span class="stat-lbl">{{ s.label }}</span>
+            </div>
         </div>
-      </div>
-
-      <p class="about-outro">
-        {{ about.outro }}
-      </p>
     </div>
 
-    <!-- RIGHT: STATS CARDS -->
-    <div class="about-right">
-      <div class="stat-card card">
-        <h3>2+</h3>
-        <p>Years Experience</p>
-      </div>
+    <div class="rule"></div>
 
-      <div class="stat-card card">
-        <h3>2k+</h3>
-        <p>Users Served</p>
-      </div>
+    <p class="intro">
+        <span>{{ typedText }}</span><span class="cursor">|</span>
+    </p>
 
-      <div class="stat-card card">
-        <h3>45%</h3>
-        <p>Latency Reduced</p>
-      </div>
+    <div class="chips">
+        <div class="chip" *ngFor="let h of about.highlights; let i = index"
+            [style.animation-delay]="(0.45 + i * 0.08) + 's'">
+            <span class="chip-dot"></span>{{ h.text }}
+        </div>
     </div>
 
-  </div>
 </section>

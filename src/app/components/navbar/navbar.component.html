@@ -2,7 +2,7 @@
   <div class="container nav-content">
 
     <!-- Logo -->
-    <a class="logo" routerLink="/" fragment="home" (click)="closeMenu()">
+    <a class="logo" style="cursor:pointer" (click)="scrollTo('home')">
       <div class="logo-mark">{{ initials }}</div>
       <div class="logo-label">
         <span class="logo-name">{{ name }}</span>
@@ -12,13 +12,13 @@
 
     <!-- Nav links + theme toggle -->
     <div class="nav-links" [class.mobile-open]="isMenuOpen">
-      <a class="nav-link" routerLink="/" fragment="about"      (click)="closeMenu()">
+      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('about')">
         <span class="link-index">01</span> About
       </a>
-      <a class="nav-link" routerLink="/" fragment="experience" (click)="closeMenu()">
+      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('experience')">
         <span class="link-index">02</span> Experience
       </a>
-      <a class="nav-link" routerLink="/" fragment="projects"   (click)="closeMenu()">
+      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('projects')">
         <span class="link-index">03</span> Projects
       </a>
 
