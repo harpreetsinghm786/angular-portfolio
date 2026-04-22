@@ -1,10 +1,20 @@
+<!-- SPLASH -->
+<div class="splash" [class.hidden]="splashHidden">
+  <div class="splash-logo">{{ initials }}</div>
+  <div class="splash-bar-wrap">
+    <div class="splash-bar"></div>
+  </div>
+  <span class="splash-status">{{ statusText }}</span>
+</div>
+
+<!-- PAGE -->
 <app-navbar></app-navbar>
 <main style="overflow:hidden;">
   <app-hero></app-hero>
   <app-about></app-about>
+    <app-skills></app-skills>
   <app-experience></app-experience>
   <app-projects></app-projects>
-  <app-skills></app-skills>
   <app-background></app-background>
 </main>
 <app-footer></app-footer>

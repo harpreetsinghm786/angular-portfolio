@@ -1,50 +1,52 @@
 <nav class="navbar glass-panel" [class.scrolled]="isScrolled">
-  <div class="container nav-content">
+    <div class="container nav-content">
 
-    <!-- Logo -->
-    <a class="logo" style="cursor:pointer" (click)="scrollTo('home')">
-      <div class="logo-mark">{{ initials }}</div>
-      <div class="logo-label">
-        <span class="logo-name">{{ name }}</span>
-        <span class="logo-sub">Portfolio</span>
-      </div>
-    </a>
+        <!-- Logo -->
+        <a class="logo" style="cursor:pointer" (click)="scrollTo('home')">
+            <div class="logo-mark">{{ initials }}</div>
+            <div class="logo-label">
+                <span class="logo-name">{{ name }}</span>
+                <span class="logo-sub">Portfolio</span>
+            </div>
+        </a>
 
-    <!-- Nav links + theme toggle -->
-    <div class="nav-links" [class.mobile-open]="isMenuOpen">
-      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('about')">
-        <span class="link-index">01</span> About
-      </a>
-      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('experience')">
-        <span class="link-index">02</span> Experience
-      </a>
-      <a class="nav-link" style="cursor:pointer" (click)="scrollTo('projects')">
-        <span class="link-index">03</span> Projects
-      </a>
+        <!-- Nav links + theme toggle -->
+        <div class="nav-links" [class.mobile-open]="isMenuOpen">
+            <a class="nav-link" (click)="scrollTo('about')">
+                <span class="link-index">01</span> About
+            </a>
 
-      <div class="nav-divider" aria-hidden="true"></div>
+            <a class="nav-link" (click)="scrollTo('skills')">
+                <span class="link-index">02</span> Skills
+            </a>
 
-      <button
-        class="theme-toggle"
-        (click)="themeService.toggleTheme()"
-        [title]="themeService.isDarkMode() ? 'Light mode' : 'Dark mode'"
-      >
-        <i *ngIf="themeService.isDarkMode(); else lightIcon" class="fa-regular fa-sun"></i>
-        <ng-template #lightIcon><i class="fa-solid fa-moon"></i></ng-template>
-      </button>
+            <a class="nav-link" (click)="scrollTo('experience')">
+                <span class="link-index">03</span> Experience
+            </a>
+
+            <a class="nav-link" (click)="scrollTo('projects')">
+                <span class="link-index">04</span> Projects
+            </a>
+
+            <a class="nav-link" (click)="scrollTo('background')">
+                <span class="link-index">05</span> Background
+            </a>
+
+            <div class="nav-divider" aria-hidden="true"></div>
+
+            <button class="theme-toggle" (click)="themeService.toggleTheme()"
+                [title]="themeService.isDarkMode() ? 'Light mode' : 'Dark mode'">
+                <i *ngIf="themeService.isDarkMode(); else lightIcon" class="fa-regular fa-sun"></i>
+                <ng-template #lightIcon><i class="fa-solid fa-moon"></i></ng-template>
+            </button>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="hamburger" [class.open]="isMenuOpen" (click)="isMenuOpen = !isMenuOpen" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
     </div>
-
-    <!-- Hamburger -->
-    <button
-      class="hamburger"
-      [class.open]="isMenuOpen"
-      (click)="isMenuOpen = !isMenuOpen"
-      aria-label="Toggle menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-  </div>
 </nav>
