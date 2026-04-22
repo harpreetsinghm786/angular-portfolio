@@ -1,0 +1,79 @@
+<section class="hero container" id="home">
+
+  <div class="wrap">
+
+    <!-- LEFT -->
+    <div class="left" data-aos="fade-up">
+
+      <p class="greeting">Hi, my name is</p>
+
+      <h1 class="name">
+        {{ data.name.split(' ')[0] }}
+        <span class="name-accent">{{ data.name.split(' ')[1] }}</span>
+      </h1>
+
+      <p class="role">
+        <span class="role-typed">{{ currentTitle }}</span><span class="cursor"></span>
+      </p>
+
+      <p class="bio">{{ data.intro }}</p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-n">3+</span>
+          <span class="stat-l">Years Exp.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-n">20+</span>
+          <span class="stat-l">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-n">100%</span>
+          <span class="stat-l">Dedicated</span>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a (click)="scroll('projects')" class="btn btn-primary">
+          View Projects
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11"
+                  stroke="white" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="mailto:hello@example.com" class="btn btn-outline">Hire Me</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right" data-aos="fade-left" data-aos-delay="200">
+      <div class="img-outer"
+           (mousemove)="onMouseMove($event)"
+           (mouseleave)="onMouseLeave()">
+
+        <div class="img-ring"></div>
+        <div class="img-blob"></div>
+
+        <div class="img-card" [style.transform]="tiltStyle">
+          <img src="assets/images/one.jpeg" alt="profile" />
+        </div>
+
+        <div class="chip chip-1"><span class="chip-dot"></span>Angular</div>
+        <div class="chip chip-2"><span class="chip-dot"></span>TypeScript</div>
+        <div class="chip chip-3"><span class="chip-dot"></span>Node.js</div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+</section>

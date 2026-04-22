@@ -1,0 +1,39 @@
+<footer class="footer">
+  <div class="container footer-inner">
+
+    <!-- Brand / monogram -->
+    <a class="footer-brand" href="#" aria-label="Back to top">
+      <div class="footer-monogram">{{ initials }}</div>
+      <div>
+        <div class="footer-name">{{ name }}</div>
+        <div class="footer-tagline">Design &amp; Development</div>
+      </div>
+    </a>
+
+    <!-- Socials + copyright -->
+    <div class="footer-center">
+      <div class="socials">
+        <a
+          *ngFor="let s of socials"
+          [href]="s.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-icon"
+          [title]="s.name"
+          [attr.aria-label]="s.name"
+        >
+          <i [class]="s.icon"></i>
+        </a>
+      </div>
+      <p class="copyright">© {{ year }} {{ name }}. All rights reserved.</p>
+    </div>
+
+    <!-- Back to top -->
+    <div class="footer-right">
+      <button class="back-to-top" (click)="scrollToTop()" aria-label="Scroll to top">
+        <i class="arrow">↑</i> Top
+      </button>
+    </div>
+
+  </div>
+</footer>

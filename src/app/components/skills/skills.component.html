@@ -1,0 +1,131 @@
+<section class="skills container" id="skills"data-aos="fade-up" >
+  <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+
+  <div class="terminal" >
+
+    <!-- TAB BAR -->
+    <div class="terminal-tabs">
+      <div class="terminal-dots">
+        <span class="dot dot--red"></span>
+        <span class="dot dot--yellow"></span>
+        <span class="dot dot--green"></span>
+      </div>
+      <button
+        class="tab"
+        *ngFor="let category of objectKeys(data); let i = index"
+        [class.active]="activeTab === category"
+        (click)="setTab(category)"
+      >
+        <span class="tab-index">{{ i + 1 }}</span>
+        {{ category | titlecase }}.ts
+      </button>
+      <div class="tab-spacer"></div>
+    </div>
+
+    <!-- EDITOR BODY -->
+    <div class="terminal-body">
+
+      <!-- LINE NUMBERS + CODE -->
+      <div class="editor-pane">
+        <div class="line-numbers">
+          <span *ngFor="let n of lineNumbers">{{ n }}</span>
+        </div>
+
+        <div class="code-pane">
+          <!-- line 1 -->
+          <div class="code-line">
+            <span class="token-keyword">const</span>&nbsp;
+            <span class="token-var">{{ activeTab | titlecase }}</span>&nbsp;
+            <span class="token-op">=</span>&nbsp;
+            <span class="token-bracket">{{ '{' }}</span>
+          </div>
+
+          <!-- line 2 -->
+          <div class="code-line indent">
+            <span class="token-key">skills</span><span class="token-op">:</span>&nbsp;
+            <span class="token-bracket">[</span>
+          </div>
+
+          <!-- SKILL TOKENS line -->
+          <div class="code-line indent2 skills-line">
+            <ng-container *ngFor="let skill of data[activeTab]; let j = index; let last = last">
+              <span
+                class="token-string skill-token"
+                [class.highlighted]="hoveredSkill === skill"
+                [style.animation-delay]="j * 45 + 'ms'"
+                (mouseenter)="hoveredSkill = skill"
+                (mouseleave)="hoveredSkill = null"
+              >"{{ skill }}"</span><span *ngIf="!last" class="token-comma">,&nbsp;</span>
+            </ng-container>
+          </div>
+
+          <!-- line 4 -->
+          <div class="code-line indent">
+            <span class="token-bracket">]</span><span class="token-comma">,</span>
+          </div>
+
+          <!-- line 5 -->
+          <div class="code-line indent">
+            <span class="token-key">count</span><span class="token-op">:</span>&nbsp;
+            <span class="token-number">{{ data[activeTab].length }}</span><span class="token-comma">,</span>
+          </div>
+
+          <!-- line 6 -->
+          <div class="code-line indent">
+            <span class="token-key">level</span><span class="token-op">:</span>&nbsp;
+            <span class="token-string">"proficient"</span><span class="token-comma">,</span>
+          </div>
+
+          <!-- line 7 -->
+          <div class="code-line">
+            <span class="token-bracket">{{ '}' }}</span><span class="token-op">;</span>
+          </div>
+
+          <div class="code-line">&nbsp;</div>
+
+          <!-- line 9 -->
+          <div class="code-line">
+            <span class="token-comment">// hover a skill to inspect</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INSPECT PANEL -->
+      <div class="inspect-panel" [class.active]="hoveredSkill">
+        <div class="inspect-header">
+          <span class="inspect-label">INSPECT</span>
+          <span class="inspect-value">{{ hoveredSkill || '—' }}</span>
+        </div>
+        <div class="inspect-body" *ngIf="hoveredSkill">
+          <div class="inspect-row">
+            <span>type</span>
+            <span class="token-string">"skill"</span>
+          </div>
+          <div class="inspect-row">
+            <span>category</span>
+            <span class="token-string">"{{ activeTab }}"</span>
+          </div>
+          <div class="inspect-row">
+            <span>status</span>
+            <span class="token-green">✓ active</span>
+          </div>
+        </div>
+        <div class="inspect-empty" *ngIf="!hoveredSkill">
+          <span>Hover any skill<br/>to inspect</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-item status-green">● live</span>
+      <span class="status-item">{{ activeTab | titlecase }}.ts</span>
+      <span class="status-item">{{ data[activeTab].length }} symbols</span>
+      <span class="status-spacer"></span>
+      <span class="status-item">TypeScript</span>
+      <span class="status-item">UTF-8</span>
+    </div>
+
+  </div>
+</section>

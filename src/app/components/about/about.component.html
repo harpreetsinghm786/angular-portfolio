@@ -1,0 +1,47 @@
+<section class="about container" id="about" data-aos="fade-up">
+  <h2 class="section-title" >About Me</h2>
+
+  <div class="about-wrapper glass-panel">
+
+    <!-- LEFT: TEXT -->
+    <div class="about-left">
+      <p class="about-intro">
+        {{ about.intro }}
+      </p>
+
+      <div class="about-highlights">
+        <div class="highlight card" *ngFor="let item of about.highlights">
+          <div class="icon-box">
+            <i class="fa-solid" [ngClass]="item.icon"></i>
+          </div>
+          <div>
+            <p class="highlight-text">{{ item.text }}</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="about-outro">
+        {{ about.outro }}
+      </p>
+    </div>
+
+    <!-- RIGHT: STATS CARDS -->
+    <div class="about-right">
+      <div class="stat-card card">
+        <h3>2+</h3>
+        <p>Years Experience</p>
+      </div>
+
+      <div class="stat-card card">
+        <h3>2k+</h3>
+        <p>Users Served</p>
+      </div>
+
+      <div class="stat-card card">
+        <h3>45%</h3>
+        <p>Latency Reduced</p>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<section class="background container" id="background">
+
+  <!-- ── EDUCATION: TRANSCRIPT ── -->
+  <div class="transcript-wrap" data-aos="fade-up">
+    <div class="transcript">
+      <div class="transcript-header">
+        <div class="transcript-seal">
+          <span>✦</span>
+        </div>
+        <div class="transcript-meta">
+          <span class="transcript-label">OFFICIAL ACADEMIC RECORD</span>
+          <h2>Education</h2>
+          <span class="transcript-sub">Verified Qualifications</span>
+        </div>
+      </div>
+
+      <div class="transcript-divider"></div>
+
+      <div class="transcript-row transcript-row--head">
+        <span>Qualification</span>
+        <span>Institution</span>
+        <span>Period</span>
+        <span>Status</span>
+      </div>
+
+      <div class="transcript-divider transcript-divider--thin"></div>
+
+      <div
+        class="transcript-row transcript-row--data"
+        *ngFor="let ed of eduData; let i = index"
+        [style.animation-delay]="i * 120 + 'ms'"
+      >
+        <span class="tr-degree">{{ ed.degree }}</span>
+        <span class="tr-inst">{{ ed.institution }}</span>
+        <span class="tr-duration">{{ ed.duration }}</span>
+        <span class="tr-status">
+          <span class="status-pill">✓ Completed</span>
+        </span>
+      </div>
+
+      <div class="transcript-divider"></div>
+      <div class="transcript-footer">
+        <span class="transcript-watermark">AUTHENTIC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ACHIEVEMENTS: GAME BADGES ── -->
+  <div class="badges-wrap" data-aos="fade-up" data-aos-delay="100">
+    <div class="badges-header">
+      <span class="panel-label">UNLOCKED</span>
+      <h2>Achievements</h2>
+      <span class="badges-count">{{ achData.length }}<span class="badges-count-label"> / {{ achData.length }}</span></span>
+    </div>
+
+    <div class="badges-grid">
+      <div
+        class="badge-item"
+        *ngFor="let ach of achData; let i = index"
+        [style.animation-delay]="i * 90 + 'ms'"
+      >
+        <div class="badge-hex">
+          <div class="badge-hex-inner">
+            <span class="badge-trophy"><i class="fa-solid fa-trophy"></i></span>
+            <div class="badge-shine"></div>
+          </div>
+          <svg class="badge-hex-border" viewBox="0 0 100 115" fill="none">
+            <path
+              d="M50 2 L97 27 L97 88 L50 113 L3 88 L3 27 Z"
+              stroke="url(#hexGrad)"
+              stroke-width="2"
+              fill="none"
+              stroke-dasharray="320"
+              stroke-dashoffset="320"
+              class="hex-path"
+            />
+            <defs>
+              <linearGradient id="hexGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="var(--accent-color)"/>
+                <stop offset="100%" stop-color="#a78bfa"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <p class="badge-label">{{ ach }}</p>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,174 @@
+/* SECTION */
+.experience {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* TIMELINE WRAPPER */
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    padding-left: 2.5rem;
+}
+
+/* ANIMATED LINE */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0;
+
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--accent-color),
+            transparent);
+
+    animation: growLine 1.2s ease forwards;
+    opacity: 0.6;
+}
+
+@keyframes growLine {
+    to {
+        height: 100%;
+    }
+}
+
+/* ITEM CARD */
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    border-radius: 16px;
+
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+
+    box-shadow:
+        var(--shadow-sm),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease, z-index 0s;
+    will-change: transform;
+    transform: translateY(0) scale(1);
+
+    /* FIX: base z-index so hover can raise above siblings */
+    z-index: 1;
+}
+
+/* HOVER EFFECT */
+.timeline-item:hover {
+    transform: translateY(-4px) scale(1.005);
+
+    /* FIX: card raises above siblings on hover */
+    z-index: 10;
+}
+
+/* DOT — anchored to the timeline line */
+.timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 2rem;
+
+    transform: translateX(-50%) translateX(1.5px) scale(1);
+    transform-origin: center center;
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    border: 3px solid var(--bg-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+    z-index: 2;
+
+    /* FIX: dot scales up smoothly on card hover */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* FIX: scale dot when parent card is hovered */
+.timeline-item:hover .timeline-dot {
+    transform: translateX(-50%) translateX(1.5px) scale(1.5);
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+/* PULSE ANIMATION */
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--accent-color);
+    opacity: 0.4;
+    animation: pulse 2s infinite ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+
+    70% {
+        transform: scale(2);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* CONTENT */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* DURATION TAG */
+.duration {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+/* TITLES */
+.timeline-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.timeline-item h4 {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* DESCRIPTION */
+.timeline-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* MOBILE */
+@media (max-width: 1000px) {
+    .timeline {
+        padding-left: 2rem;
+    }
+
+    .timeline-item {
+        padding: 1.5rem;
+    }
+
+    .timeline-dot {
+        top: 1.8rem;
+        left: -2rem;
+    }
+}

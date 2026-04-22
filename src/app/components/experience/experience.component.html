@@ -1,0 +1,17 @@
+<section class="experience container" id="experience" data-aos="fade-up">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="timeline">
+        <div class="timeline-item glass-panel" *ngFor="let exp of data; let i = index"
+            [attr.data-aos-delay]="i * 100">
+            <div class="timeline-dot"></div>
+
+            <div class="content">
+                <span class="duration">{{ exp.duration }}</span>
+                <h3>{{ exp.role }}</h3>
+                <h4>{{ exp.company }}</h4>
+                <p>{{ exp.desc }}</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,284 @@
+/* ── HERO SHELL ── */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -10%;
+  width: 60vw; height: 60vw;
+  max-width: 700px; max-height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── LAYOUT ── */
+.wrap {
+  position: relative; z-index: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: 140px 0 80px;
+}
+
+/* ── LEFT ── */
+.left {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  min-width: 0;
+}
+
+.greeting {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.greeting::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+.name-accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 1.6rem;
+  min-height: 2em;
+}
+.role-typed { color: var(--text-primary); font-weight: 600; }
+.cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--accent-color);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.bio {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 2.2rem;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+}
+.stat { display: flex; flex-direction: column; gap: 2px; }
+.stat-n {
+  font-size: 1.6rem; font-weight: 800; line-height: 1;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-l {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.stat-divider {
+  width: 1px; height: 38px;
+  background: var(--border-color);
+  align-self: center;
+}
+
+.btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btns .btn { display: inline-flex; align-items: center; gap: 8px; }
+.btns .btn-primary:hover { box-shadow: 0 8px 24px rgba(59,130,246,0.25); }
+
+/* ── RIGHT ── */
+.right { flex-shrink: 0; }
+
+/*
+  img-outer total width = chip area (90px) + card (260px) = 350px
+  Chips live in the 90px left lane; card fills the right 260px.
+*/
+.img-outer {
+  position: relative;
+ width: 300px;
+  height: 450px;
+}
+
+/* glass card — right 260px of img-outer */
+.img-card {
+  position: absolute;
+  top: 0; right: 0;
+  width: 300px;
+  height: 450px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm), 0 20px 60px rgba(59,130,246,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.15s ease-out;
+}
+.img-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.5s ease;
+}
+.img-outer:hover .img-card img { transform: scale(1.04); }
+.img-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(15,23,42,0.3) 100%);
+  pointer-events: none;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* dashed ring */
+.img-ring {
+  position: absolute;
+  top: -10px; right: -10px;
+  width: 280px; height: 400px;
+  border-radius: 2rem;
+  border: 1px dashed var(--border-color);
+  pointer-events: none;
+  animation: spin-slow 20s linear infinite;
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+/* blob glow */
+.img-blob {
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 320px; height: 440px;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  opacity: 0.07; filter: blur(40px);
+  transition: opacity 0.4s;
+}
+.img-outer:hover .img-blob { opacity: 0.13; }
+
+/* ── CHIPS
+   Anchored to the LEFT edge of the card (right: 260px from outer right).
+   Each chip is right-aligned so its right edge meets the card's left edge
+   with a small 12px gap.
+── */
+.chip {
+  position: absolute;
+  display: flex; align-items: center; gap: 7px;
+  padding: 6px 12px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+  /* right-align text inside chip so all chips line up on their right edge */
+  right: 272px; /* 260px card + 12px gap */
+}
+.chip-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.chip-1 { top: 18%;  animation: chipF 6s   ease-in-out infinite; }
+.chip-2 { top: 46%;  animation: chipF 7s   ease-in-out infinite 0.8s; }
+.chip-3 { top: 72%;  animation: chipF 5.5s ease-in-out infinite 0.4s; }
+
+@keyframes chipF {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  z-index: 1;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent-color), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-secondary);
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 1; transform: scaleY(1); }
+  50%      { opacity: 0.3; transform: scaleY(0.5); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+    .hero{
+          min-height: none;
+    }
+
+    .scroll-hint{
+        display: none;
+    }
+  .wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 120px 0 60px;
+    gap: 3rem;
+  }
+  .left { align-items: center; }
+  .greeting { justify-content: center; }
+  .btns { justify-content: center; }
+  .stats { justify-content: center; }
+  .img-outer { width: 240px; height: 300px; }
+  .img-card  { width: 240px; height: 300px; top: 0; right: 0; }
+  .chip-1, .chip-2, .chip-3 { display: none; }
+}

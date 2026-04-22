@@ -1,0 +1,55 @@
+<section class="projects container" id="projects" data-aos="fade-up">
+  <h2 class="section-title" >Featured Projects</h2>
+  <div class="grid">
+    <div
+      class="card glass-panel"
+      *ngFor="let proj of data; let i = index; trackBy: trackByIndex"
+    >
+      <!-- ── PROJECT IMAGE BANNER ── -->
+      <div class="card-image">
+        <img
+          *ngIf="proj.image; else imageFallback"
+          [src]="proj.image"
+          [alt]="proj.title"
+        />
+        <ng-template #imageFallback>
+          <div class="image-placeholder">
+            <span>{{ proj.title[0] }}</span>
+          </div>
+        </ng-template>
+
+        <!-- overlay that appears on hover -->
+        <div class="image-overlay"></div>
+
+        <!-- decorative index number -->
+        <span class="card-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
+      </div>
+
+      <!-- ── CARD BODY ── -->
+      <div class="card-body">
+
+        <!-- PROJECT LOGO + TITLE ROW -->
+        <div class="card-header">
+          <div class="project-logo" *ngIf="proj.logo">
+            <img [src]="proj.logo" [alt]="proj.title + ' logo'" />
+          </div>
+          <div class="project-logo project-logo--placeholder" *ngIf="!proj.logo">
+            <span>{{ proj.title[0] }}</span>
+          </div>
+          <h3>{{ proj.title }}</h3>
+        </div>
+
+        <p>{{ proj.desc }}</p>
+
+        <div class="tech-stack">
+          <span class="tech-badge" *ngFor="let t of proj.tech">{{ t }}</span>
+        </div>
+
+        <div class="links">
+          <a [href]="proj.github" target="_blank" rel="noopener">GitHub ↗</a>
+          <a [href]="proj.live" target="_blank" rel="noopener">Live Demo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
